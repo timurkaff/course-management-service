@@ -1,50 +1,54 @@
-# React + TypeScript + Vite
+# Course Management Service
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Проект веб-сервиса для управления обучающими курсами. На данный момент выполнена начальная настройка проекта, организована структура веток и настроен маршрутизатор для навигации между страницами.
 
-Currently, two official plugins are available:
+## Стек технологий
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Vite** — инструмент для создания и сборки современных фронтенд-приложений.
+- **React** — библиотека для создания пользовательских интерфейсов.
+- **TypeScript** — статическая типизация для повышения надежности кода.
+- **React Router** — библиотека для маршрутизации.
 
-## Expanding the ESLint configuration
+## Структура проекта
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Проект структурирован в соответствии с принципами Feature-Sliced Design. Основные директории:
 
-- Configure the top-level `parserOptions` property like this:
+- `app/` — корневой компонент и конфигурация приложения.
+- `pages/` — основные страницы приложения.
+- `features/` — отдельные функциональные модули.
+- `Shared` - общие компоненты и типы.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Gitflow
+
+Для управления версиями используется стратегия Gitflow. Ветки, созданные на данный момент:
+
+- **main** — основная ветка для финальных релизов.
+- **develop** — ветка для интеграции изменений.
+- **feature/setup-routing** — ветка для настройки маршрутизации.
+- **feature/integrate-zustand** — ветка для настройки управления состоянием.
+
+## Установка и запуск проекта
+
+1. Клонируйте репозиторий:
+```bash
+git clone https://github.com/timurkaff/course-management-service.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+2. Установите зависимости:
+```bash
+npm install
 ```
+
+3. Запустите проект:
+```bash
+npm run dev
+```
+## Прогресс
+
+- Проект инициализирован с использованием Vite и шаблона `react-ts`.
+- Настроены базовые ветки в соответствии с Gitflow.
+- Создана и настроена маршрутизация с использованием React Router
+
+## TODO
+- Подключить React Query
+- Добавить тип Nullable для использования в проекте.
