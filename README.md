@@ -1,50 +1,29 @@
-# React + TypeScript + Vite
+# Управление состоянием курсов с использованием Zustand
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+В этой ветке реализовано управление состоянием курсов с помощью библиотеки Zustand. Zustand — это небольшая и быстрая библиотека для управления состоянием в приложениях React, которая позволяет легко создавать и управлять состоянием.
 
-Currently, two official plugins are available:
+### Описание
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Данный код создает хранилище для управления списком курсов, предоставляя функции для добавления и удаления курсов. Это позволяет эффективно управлять данными курсов в вашем приложении.
 
-## Expanding the ESLint configuration
+### Интерфейсы
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. **Course**: Определяет структуру объекта курса:
+   - `id`: Уникальный идентификатор курса (число).
+   - `title`: Название курса (строка).
+   - `description`: Описание курса (строка).
 
-- Configure the top-level `parserOptions` property like this:
+2. **CourseState**: Определяет форму состояния, управляемого хранилищем:
+   - `courses`: Массив объектов `Course`.
+   - `addCourse`: Функция для добавления нового курса.
+   - `removeCourse`: Функция для удаления курса по его ID.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Создание хранилища
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Хранилище создается с помощью функции `create` из Zustand. Оно инициализирует состояние и предоставляет методы для его изменения:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- **Начальное состояние**: Массив `courses` инициализируется как пустой.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- **addCourse**: Метод для добавления нового курса в массив `courses`. Он обновляет состояние и выводит информацию о добавленном курсе в консоль.
+
+- **removeCourse**: Метод для удаления курса из массива `courses` по его ID. Он фильтрует текущие курсы и обновляет состояние, выводя ID удаленного курса в консоль.
