@@ -1,9 +1,10 @@
-import {create} from 'zustand';
+import { create } from 'zustand';
+import { Nullable } from '../../Shared/Types/Nullable';
 
 interface Course {
     id: number;
     title: string;
-    description: string;
+    description: Nullable<string>;
 }
 
 interface CourseState {
@@ -25,4 +26,3 @@ export const useCourseStore = create<CourseState>((set) => ({
         console.log('remove course', id);
     },
 }));
-
