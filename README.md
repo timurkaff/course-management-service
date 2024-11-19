@@ -1,50 +1,29 @@
-# React + TypeScript + Vite
+# README
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Настройка маршрутизации в React с использованием React Router
 
-Currently, two official plugins are available:
+В этой ветке реализована маршрутизация в приложении React с помощью библиотеки React Router. React Router позволяет управлять навигацией между различными страницами вашего приложения, обеспечивая удобный и интуитивно понятный интерфейс для пользователей.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Описание
 
-## Expanding the ESLint configuration
+Данный код создает основное приложение с маршрутизацией, определяя три страницы: главную страницу, страницу курсов и страницу "О нас". Каждая страница отображается в зависимости от текущего URL.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Компоненты
 
-- Configure the top-level `parserOptions` property like this:
+1. **HomePage**: Компонент, отображающий главную страницу приложения.
+2. **CoursesPage**: Компонент, отображающий страницу с курсами.
+3. **AboutPage**: Компонент, отображающий страницу "О нас".
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Настройка маршрутизации
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+В коде используется компонент `Router` из библиотеки `react-router-dom`, который оборачивает все маршруты. Внутри него определяются маршруты с помощью компонента `Routes` и `Route`:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- **`<Router>`**: Оборачивает все маршруты и управляет историей навигации.
+- **`<Routes>`**: Определяет набор маршрутов.
+- **`<Route>`**: Определяет отдельный маршрут, связывая путь с соответствующим компонентом.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### Определенные маршруты
+
+- **`/`**: Главная страница, отображает компонент `HomePage`.
+- **`/courses`**: Страница курсов, отображает компонент `CoursesPage`.
+- **`/about`**: Страница "О нас", отображает компонент `AboutPage`.
